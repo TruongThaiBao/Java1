@@ -13,134 +13,76 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-
     @FXML
     private Polygon item1, item2, item3;
     @FXML
-    protected HBox hBox;
-
-
+    private BorderPane borderPane;
     private Stage stage;
-
-    @FXML
-    protected void onHelloButtonClick() {
-
-    }
-
     public void getStage(Stage stage) {
         this.stage = stage;
     }
-
+    public void setBorderPane(BorderPane borderPane) {
+        this.borderPane = borderPane;
+    }
     @FXML
     protected void delShape(ActionEvent event) {
-        hBox.getChildren().removeAll(item1, item2, item3);
-    }
-
-    @FXML
-    protected void Exit(ActionEvent event) {
-        stage.close();
+        borderPane.setLeft(null);
+        borderPane.setCenter(null);
+        borderPane.setRight(null);
     }
     @FXML
-    protected void openOption(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Option.fxml"));
-            Parent root = loader.load();
-
-            Stage newStage = new Stage();
-            newStage.setTitle("Option");
-            newStage.setScene(new Scene(root));
-//            newStage.initStyle(StageStyle.UNDECORATED);
-            newStage.setResizable(false);
-            newStage.show();
-            btnOK.setOnAction(event -> {
-//            Label Er = (Label) fxmlLoader.getNamespace().get("lblErr");
-                if(this.getRadioButtonValue() >0 && this.getColorOption() != null){
-                    this.DrawShapes(this.getRadioButtonValue(),this.getColorOption(),this.bdPane);
-                    stageop.close();
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    protected void Exit(ActionEvent event) {stage.close();}
     @FXML
-    private Button okButton;
-    @FXML
-    private ToggleGroup shape;
-
-    @FXML
-    Label lb;
-    public int getValueShape(){
-        RadioButton selectedRadioButton = (RadioButton) shape.getSelectedToggle();
-        String RadioValue = selectedRadioButton.getText();
-        if (RadioValue.equals("Rectangle")){
-            lb.setText("");
-            return 1;
-        }else if (RadioValue.equals("Ellipse")) {
-            lb.setText("");
-            return 2;
-        } else if(RadioValue.equals("Triangle")){
-            lb.setText("");
-            return 3;
-        }else {
-            return 1;
-        }
+    protected void openOption(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Option.fxml"));
+        Parent root = loader.load();
+        Stage newStage = new Stage();
+        newStage.setTitle("Option");
+        newStage.setScene(new Scene(root));
+        newStage.setResizable(false);
+        newStage.initModality(Modality.APPLICATION_MODAL);
+        newStage.initOwner(this.stage);
+        OptionController optionController = loader.getController();
+        optionController.setStage(stage); // Gán biến stage chính cho OptionController
+        optionController.setBorderPane(borderPane); //Gán giá trị cho AnchorPane
+        newStage.show();
     }
-    public Rectangle drawRec(){
-        Rectangle rectangle = new Rectangle();
-        rectangle.setHeight(100);
-        rectangle.setWidth(120);
-        rectangle.setFill(Color.RED);
-        return rectangle;
-    }
-//    @FXML
-//    protected void onOKButtonClick(ActionEvent event) throws IOException {
-//        Stage stage = (Stage) okButton.getScene().getWindow();
-//        stage.close();
-//        if (hBox != null && getValueShape() == 1) {
-//            hBox.getChildren().clear();
-////            Rectangle rectangle = drawRec(); // Vẽ hình chữ nhật
-////            hBox.getChildren().add(rectangle); // Đặt hình chữ nhật vào trung tâm của BorderPane
-//        }
-//        System.out.println(getValueShape());
-    }
-
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        TranslateTransition transition1 = new TranslateTransition(Duration.seconds(1), item1);
-//        transition1.setByY(80f);
-//        transition1.setCycleCount(Animation.INDEFINITE);
-//        transition1.setAutoReverse(true);
-//        transition1.play();
-//
-//        TranslateTransition transition2 = new TranslateTransition(Duration.seconds(1), item2);
-//        transition2.setByY(-80f);
-//        transition2.setCycleCount(Animation.INDEFINITE);
-//        transition2.setAutoReverse(true);
-//        transition2.play();
-//
-//        TranslateTransition transition3 = new TranslateTransition(Duration.seconds(1), item3);
-//        transition3.setByY(80f);
-//        transition3.setCycleCount(Animation.INDEFINITE);
-//        transition3.setAutoReverse(true);
-//        transition3.play();
+        TranslateTransition transition1 = new TranslateTransition(Duration.seconds(1), item1);
+        transition1.setByY(80f);
+        transition1.setCycleCount(Animation.INDEFINITE);
+        transition1.setAutoReverse(true);
+        transition1.play();
 
+        TranslateTransition transition2 = new TranslateTransition(Duration.seconds(1), item2);
+        transition2.setByY(-80f);
+        transition2.setCycleCount(Animation.INDEFINITE);
+        transition2.setAutoReverse(true);
+        transition2.play();
+
+        TranslateTransition transition3 = new TranslateTransition(Duration.seconds(1), item3);
+        transition3.setByY(80f);
+        transition3.setCycleCount(Animation.INDEFINITE);
+        transition3.setAutoReverse(true);
+        transition3.play();
     }
-
+    public void getRoot(BorderPane borderPane) {
+        this.borderPane = borderPane;
+    }
 }

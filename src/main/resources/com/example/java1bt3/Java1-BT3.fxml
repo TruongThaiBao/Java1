@@ -4,13 +4,13 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Polygon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="447.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java1bt3.MainController">
-   <children>
-      <MenuBar prefHeight="29.0" prefWidth="447.0">
+
+<BorderPane fx:id="borderPane" prefHeight="424.0" prefWidth="499.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.java1bt3.MainController">
+   <top>
+      <MenuBar prefHeight="22.0" prefWidth="22.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
@@ -25,40 +25,42 @@
           </Menu>
         </menus>
       </MenuBar>
-      <HBox fx:id="hBox" alignment="CENTER" layoutX="74.0" layoutY="21.0" prefHeight="294.0" prefWidth="300.0">
-         <children>
-            <Polygon fx:id="item3" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE">
-              <points>
-                <Double fx:value="-50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="0.0" />
-                <Double fx:value="-60.0" />
-              </points>
-            </Polygon>
-            <Polygon fx:id="item2" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE">
-              <points>
-                <Double fx:value="-50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="0.0" />
-                <Double fx:value="-60.0" />
-              </points>
-            </Polygon>
+   </top>
+   <left>
+      <Polygon fx:id="item3" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" BorderPane.alignment="CENTER">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon>
+   </left>
+   <right>
 
-             <Polygon fx:id="item1" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE">
-              <points>
-                <Double fx:value="-50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="50.0" />
-                <Double fx:value="40.0" />
-                <Double fx:value="0.0" />
-                <Double fx:value="-60.0" />
-              </points>
-            </Polygon>
-         </children>
-      </HBox>
-   </children>
-</AnchorPane>
+                   <Polygon fx:id="item1" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" BorderPane.alignment="CENTER">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon>
+   </right>
+   <center>
+      <Polygon fx:id="item2" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE" BorderPane.alignment="CENTER">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon>
+   </center>
+</BorderPane>
